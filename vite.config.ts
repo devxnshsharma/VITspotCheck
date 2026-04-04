@@ -4,5 +4,4 @@ import react from '@vitejs/plugin-react' // or whatever framework you are using
 export default defineConfig({
   plugins: [react()],
   // Add this base property!
-  base: '/VITspotCheckFinal/', 
-})
+base: process.env.NODE_ENV === 'production' && !process.env.VERCEL ? '/VITspotCheckFinal/' : '/',})
