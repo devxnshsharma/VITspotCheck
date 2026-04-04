@@ -1,15 +1,10 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import path from 'path';
+// next.config.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Remove or comment out this line:
+  // output: 'export', 
+  
+  // keep your other configs...
+};
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
-  },
-  // To match your previous GitHub Pages requirement:
-  // base: '/VITspotCheckFinal/', 
-});
+module.exports = nextConfig;
