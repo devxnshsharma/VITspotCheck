@@ -1,24 +1,13 @@
 /** @type {import('next').NextConfig} */
-const isProd = process.env.NODE_ENV === 'production' || process.env.GITHUB_ACTIONS === 'true';
-
-// REPLACE 'VITspotCheckFinal' with your actual repository name if it differs
-const repoName = 'VITspotCheckFinal';
 
 const nextConfig = {
-  // Enables static HTML export for GitHub Pages
-  output: isProd ? 'export' : undefined,
+  // Vercel handles API routes and dynamic rendering automatically.
+  // We removed 'output: export' so your /api/admin/summary route will work perfectly.
   
-  // Set the base path for repository-based hosting (username.github.io/repo-name)
-  basePath: isProd ? `/${repoName}` : undefined,
+  // We also removed 'basePath' because Vercel will host your project at the root domain
+  // (e.g., your-project.vercel.app) rather than a subdirectory like GitHub Pages does.
   
-  // Disable image optimization as GitHub Pages doesn't support the Next.js Image API
-  images: {
-    unoptimized: true,
-  },
-  
-  // Ensure trailing slashes are handled correctly for static hosting
-  trailingSlash: true,
+  // Vercel natively supports image optimization, so you no longer need to force unoptimized images!
 };
 
 export default nextConfig;
-
