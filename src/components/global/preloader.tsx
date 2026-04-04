@@ -16,15 +16,17 @@ export function Preloader({ onComplete }: PreloaderProps) {
     const startTime = Date.now()
     const minDuration = 2500 // Minimum 2.5 seconds
     
+    // Easing function for smooth organic progress (easeOutQuad)
+    const easeOutQuad = (t: number) => t * (2 - t)
+
     function update() {
       const elapsed = Date.now() - startTime
-      const baseProgress = Math.min(elapsed / minDuration * 100, 100)
+      const rawProgress = Math.min(elapsed / minDuration, 1)
       
-      // Add some organic variation
-      const variation = Math.sin(elapsed * 0.005) * 3
-      const targetProgress = Math.min(baseProgress + variation, 100)
+      // Apply easing to make it extremely smooth and never jump backward
+      const smoothedProgress = easeOutQuad(rawProgress) * 100
       
-      setProgress(prev => prev + (targetProgress - prev) * 0.1)
+      setProgress(smoothedProgress)
       
       if (elapsed < minDuration) {
         requestAnimationFrame(update)
@@ -97,7 +99,7 @@ export function Preloader({ onComplete }: PreloaderProps) {
           )}
         >
           <div 
-            className="h-full bg-primary transition-[width] duration-300 ease-out"
+            className="h-full bg-primary"
             style={{ width: `${progress}%` }}
           />
         </div>
