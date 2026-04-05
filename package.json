@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "prisma generate && prisma db push && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
     "server": "tsx server/index.ts",
