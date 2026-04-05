@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "prisma generate && prisma db push && vite build",
+    "build": "prisma generate --schema=server/prisma/schema.prisma && prisma db push --schema=server/prisma/schema.prisma && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
     "server": "tsx server/index.ts",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate --schema=server/prisma/schema.prisma"
   },
   "dependencies": {
     "@cloudflare/speedtest": "^1.7.0",
