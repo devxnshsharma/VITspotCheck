@@ -66,8 +66,8 @@ export function BookingSection() {
         roomId: selectedRoom,
         userId: user?.id || 'u1',
         date: selectedDate,
-        startTime: `${startHour}:00`,
-        endTime: `${endHour}:00`,
+        startTime: `${String(startHour).padStart(2, '0')}:00`,
+        endTime: `${String(endHour).padStart(2, '0')}:00`,
         status: (isDbSuccess ? 'confirmed' : 'pending') as "confirmed" | "pending",
         purpose: `${category} - ${purpose}`
       }
